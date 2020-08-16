@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 class UserManger(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
         """creates and saves new user"""
+        if not email:
+            raise ValueError("Error no email was given")
         user = self.model(
             email=self.normalize_email(email),
             **extra_fields
