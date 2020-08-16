@@ -120,4 +120,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Override default django user model with core user model
 AUTH_USER_MODEL = 'core.User'
