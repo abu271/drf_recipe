@@ -100,11 +100,11 @@ class PrivateUserApiTests(TestCase):
 
     def setUp(self):
         self.client = APIClient()
-        self.user = create_user({
-            "email": "test@outlook.com",
-            "password": "test123",
-            "name": "test"
-        })
+        self.user = create_user(
+            email="test@outlook.com",
+            password="test123",
+            name="test"
+        )
         self.client.force_authenticate(user=self.user)
 
     def test_get_profile_success(self):
@@ -127,7 +127,7 @@ class PrivateUserApiTests(TestCase):
         res = self.client.get(ME_URL)
         payload = {
             "name": "update name",
-            "passwprd": "updatepassword"
+            "password": "updatepassword"
         }
         res = self.client.patch(ME_URL, payload)
 
