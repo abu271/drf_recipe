@@ -20,7 +20,7 @@ class PublicIngredientsApiTests(TestCase):
         """Test that login is required"""
         res = self.client.get(INGREDIENTS_URL)
 
-        self.assertEqaul(res.status_code, status.HTTP_401_UNAUTHORIZED)
+        self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
 
 
 class PrivateIngredientsApiTests(TestCase):
@@ -49,7 +49,7 @@ class PrivateIngredientsApiTests(TestCase):
     def test_ingredients_limited_to_user(self):
         """Test that ingredients for authenticated user are returned"""
         user2 = get_user_model().objects.create_user(
-            "test@outlook.com",
+            "test123@outlook.com",
             "test123"
         )
         Ingredient.objects.create(user=user2, name="Salt")
