@@ -108,7 +108,7 @@ class PrivateRecipeApiTests(TestCase):
         """Test creating recipe"""
         payload = {
             "title": "Choclate cake",
-            "time": 30,
+            "time_minutes": 30,
             "price": 5.00
         }
         res = self.client.post(RECIPES_URL, payload)
@@ -119,7 +119,7 @@ class PrivateRecipeApiTests(TestCase):
         for key in payload.keys():
             self.assertEqual(payload[key], getattr(recipe, key))
 
-    def test_create_recipe_with_tags():
+    def test_create_recipe_with_tags(self):
         """Test creating a recipe with tags"""
         tag1 = sample_tag(user=self.user, name="Main")
         tag2 = sample_tag(user=self.user, name="Dessert")
