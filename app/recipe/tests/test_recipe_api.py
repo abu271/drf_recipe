@@ -250,10 +250,10 @@ class RecipeImageUploadTests(TestCase):
 
         tag_1 = sample_tag(user=self.user, name="Vegan")
         tag_2 = sample_tag(user=self.user, name="Vegetarian")
-        
+
         recipe_1.tags.add(tag_1)
         recipe_2.tags.add(tag_2)
-        
+
         res = self.client.get(
             RECIPES_URL,
             {"tags": f"{tag_1.id}, {tag_2.id}"}
@@ -289,4 +289,3 @@ class RecipeImageUploadTests(TestCase):
         self.assertIn(serializer_1.data, res.data)
         self.assertIn(serializer_2.data, res.data)
         self.assertNotIn(serializer_3.data, res.data)
- 
